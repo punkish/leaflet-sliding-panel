@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Leaflet Sliding Panel</title>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script type="text/javascript" src="src/slidingpanel.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="dist/slidingpanel.css">
+    <style>
+      html, body, #map { height: 100%; margin: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script type="text/javascript">
+      let map = L.map('map').setView([40, 5], 6);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap'
+      }).addTo(map);
+
+      let marker = L.marker(map.getCenter()).addTo(map);
+      marker.on('click', function() {
+        map.openPanel("<h1>Demo Marker</h1><p>So, how's the panel working for you?</p><p>See the <a href=\"https://github.com/Zverik/leaflet-sliding-panel\">source code</a>.</p>");
+      });
+    </script>
+  </body>
+</html>
